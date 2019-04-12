@@ -38,6 +38,12 @@ export default {
       this.artList = res.data.articles;
       console.log(res);
     });
+    axios({
+      method: "GET",
+      url: "http://127.0.0.1:3000/users"
+    }).then(res => {
+      console.log(res);
+    });
   },
 	methods:{
 		...mapMutations(['setArt'])
