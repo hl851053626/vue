@@ -6,11 +6,13 @@
 
 <script>
 import home from './pages/home/home'
+import register from './pages/register/register'
 
 export default {
   name: 'app',
   components: {
-    home
+    home,
+    register
   }
 }
 </script>
