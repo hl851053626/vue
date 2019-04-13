@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     register(){
-      axios.get('http://127.0.0.1:3000/register',{params:{username:this.username,password:this.password}})
+      axios.get('http://192.168.31.219:3000/register',{params:{username:this.username,password:this.password}})
         .then(res => console.log('tag', res))
     }
   }

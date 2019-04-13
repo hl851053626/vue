@@ -40,7 +40,7 @@ export default {
     });
     axios({
       method: "GET",
-      url: "http://127.0.0.1:3000/users"
+      url: "http://192.168.31.219:3000/users"
     }).then(res => {
       console.log(res);
     });

@@ -1,25 +1,43 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import home from '../pages/home/home'
-import detail from '../pages/detail/detail'
-import register from '../pages/register/register'
+import Header from '../components/Header'
+import Home from '../components/Home'
+import Detail from '../components/Detail'
+import About from '../components/About'
+
 
 
 Vue.use(VueRouter)
 export default new VueRouter({
-	mode:'history',
-	routes:[
+	mode: 'history',
+	routes: [
 		{
-			path:'/',
-			component:home
+			path: '/',
+			redirect: 'index'
 		},
 		{
-			path: '/detail/:id',
-			component: detail
+			path: '/index',
+			name: 'index',
+			components: {
+				header: Header,
+				main: Home
+			}
 		},
 		{
-			path: '/register',
-			component: register
+			path: '/detail',
+			name: 'detail',
+			components: {
+				header: Header,
+				main: Detail
+			}
+		},
+		{
+			path: '/about',
+			name: 'about',
+			components: {
+				header: Header,
+				main: About
+			}
 		}
 	]
 })
