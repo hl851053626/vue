@@ -6,8 +6,8 @@ var sql = require('../mysql.js')
 /* GET home page. */
 
 var client = mysql.createConnection({
-  host: "localhost",           //这是数据库的地址
-  user: "root",                  //需要用户的名字
+  host: "122.152.199.244",           //这是数据库的地址
+  user: "",                  //需要用户的名字
   password: "",            //用户密码 ，如果你没有密码，直接双引号就是
   database: "vueblog",          //数据库名字
   port: 3306
