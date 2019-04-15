@@ -23,6 +23,7 @@ export default {
       text-align center
       background #202020
     .main 
+      padding-left 30px
       min-height 100vh
-      background #fff
+      background #eee
 </style>

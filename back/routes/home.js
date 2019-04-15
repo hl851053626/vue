@@ -27,10 +27,7 @@ var jsonWrite = function(res, ret) {
 };
 
 router.get('/', function( req, res, next){
-  console.log(req)
-  var id = req.query.id
-  console.log(id)
-  client.query('SELECT * FROM article WHERE id=' + id, function(err, result){
+  client.query('SELECT * FROM article', function(err, result){
     if(err){
       console.log('err:', err) 
     }else{
@@ -39,23 +36,5 @@ router.get('/', function( req, res, next){
     }
   })
 })
-
-router.post('/edit', function( req, res, next){
-  console.log(req.body)
-  var content = req.body.params.content
-  console.log(11111111)
-  // var id = req.query.id
-  // console.log(id)
-  var sql = 'INSERT INTO article(paragraph)  VALUES("'+ content +'")'
-  client.query(sql, function(err, result){
-    if(err){
-      console.log('err:', err) 
-    }else{
-      console.log('res:', result)
-      // jsonWrite(res,result)
-    }
-  })
-})
-
 
 module.exports = router;

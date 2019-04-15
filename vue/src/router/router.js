@@ -4,12 +4,13 @@ import Header from '../components/Header'
 import Home from '../components/Home'
 import Detail from '../components/Detail'
 import About from '../components/About'
+import Edit from '../components/Edit'
 
 
 
 Vue.use(VueRouter)
 export default new VueRouter({
-	mode: 'history',
+	mode:'history',
 	routes: [
 		{
 			path: '/',
@@ -24,7 +25,7 @@ export default new VueRouter({
 			}
 		},
 		{
-			path: '/detail',
+			path: '/detail/:id',
 			name: 'detail',
 			components: {
 				header: Header,
@@ -37,6 +38,14 @@ export default new VueRouter({
 			components: {
 				header: Header,
 				main: About
+			}
+		},
+		{
+			path:'/edit',
+			name:'edit',
+			components: {
+				header: Header,
+				main: Edit
 			}
 		}
 	]

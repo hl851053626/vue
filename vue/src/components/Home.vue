@@ -3,16 +3,21 @@
     <ul class="home-ul">
       <li v-for='item of articleList' :key='item.id' class="home-li">
         <div class="header">
-          <span class="title">{{item.title}}</span>
+          <router-link :to="'/detail/' + item.id">
+            <span class="title">{{item.title}}</span>
+          </router-link>
           <div class="author_dete">
             <span class="author">by {{item.author_name}}</span>
             <span class="date">{{item.date}}</span>
           </div>
         </div>
         <div class="content">{{item.paragraph}}</div>
-        <div class="more">查看更多</div>
+        <router-link :to="'/detail/' + item.id">
+          <div class="more">查看更多</div>
+        </router-link>
       </li>
     </ul>
+    <div>{{test}}</div>
 </div>
 </template>
 
@@ -22,13 +27,13 @@ export default {
   name:'Home',
   data(){
     return{
-      articleList:[]
+      articleList:[],
+      test: ''
     }
   },
   mounted() {
-    axios.post('/news/index').then((res)=>{
-      console.log(res)
-      this.articleList = res.data.articles
+    axios.get('http://127.0.0.1:3000/home').then((res)=>{
+      this.articleList = res.data.list
     })
   },
 }
