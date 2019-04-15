@@ -42,11 +42,15 @@ router.get('/', function( req, res, next){
 
 router.post('/edit', function( req, res, next){
   console.log(req.body)
-  var content = req.body.params.content
+  var time = new Date()
+  var title = req.body.params.title
+  var author = req.body.params.author
+  var date = time.getFullYear() + '-' + ( time.getMonth() + 1) + '-' + time.getDate()
+  var content = escape(req.body.params.content)
   console.log(11111111)
   // var id = req.query.id
   // console.log(id)
-  var sql = 'INSERT INTO article(paragraph)  VALUES("'+ content +'")'
+  var sql = 'INSERT INTO article(title,author_name,date,paragraph)  VALUES("' + title + '","' + author + '","' + date + '","' + content +'")'
   client.query(sql, function(err, result){
     if(err){
       console.log('err:', err) 

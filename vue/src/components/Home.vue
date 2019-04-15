@@ -1,23 +1,22 @@
 <template>
   <div class="home">
     <ul class="home-ul">
-      <li v-for='item of articleList' :key='item.id' class="home-li">
+      <router-link tag='li' v-for='item of articleList' :key='item.id' class="home-li" :to="'/detail/' + item.id">
         <div class="header">
-          <router-link :to="'/detail/' + item.id">
-            <span class="title">{{item.title}}</span>
-          </router-link>
+          <div class="title">
+            {{item.title}}
+          </div>
           <div class="author_dete">
             <span class="author">by {{item.author_name}}</span>
             <span class="date">{{item.date}}</span>
           </div>
         </div>
-        <div class="content">{{item.paragraph}}</div>
-        <router-link :to="'/detail/' + item.id">
-          <div class="more">查看更多</div>
-        </router-link>
-      </li>
+        <!-- <div class="content">{{item.paragraph}}</div> -->
+        <!-- <router-link :to="'/detail/' + item.id" class="more">
+          <div>查看更多</div>
+        </router-link> -->
+      </router-link>
     </ul>
-    <div>{{test}}</div>
 </div>
 </template>
 
@@ -34,6 +33,7 @@ export default {
   mounted() {
     axios.get('http://127.0.0.1:3000/home').then((res)=>{
       this.articleList = res.data.list
+      console.log('art', this.articleList)
     })
   },
 }
@@ -43,28 +43,34 @@ export default {
 .home
   .home-ul
     .home-li  
-      min-height 200px
+      display flex
+      flex-direction column
+      justify-content space-around
       background #fff
-      margin-top 20px
+      border-bottom 20px solid #eee
       list-style none
       .header
+        display flex
+        flex-direction row
+        justify-content space-between
         width 100%
         height 100px
         line-height 100px
         .title
+          cursor pointer
           display inline-block
           width 70%
+          padding-left 10px 
           font-size 30px
           font-weight bold
           color #000
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+        .title:hover
+          color #FF8B17
         .author_dete 
-          display inline-block
-          width 30%
-          float right
-          text-align right
+          padding-right 10px
       .more
         font-size 20px
         color blue

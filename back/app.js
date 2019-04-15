@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var $mysql = require("mysql");
 var sql = require("./mysql");       //   这句话是，引入当前目录的mysql模板   mysql就是我们上面创建的mysql.js
-
+var history = require('connect-history-api-fallback');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var articleRouter = require('./routes/article');
@@ -38,6 +38,16 @@ app.all('*', function (req, res, next) {
 	res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
 	next();
 })
+app.use(history({
+	rewrites: [
+		{
+			from: /^\/about\/.*$/,
+			to: function (context) {
+				return context.parsedUrl.pathname;
+			}
+		}
+	]
+}))
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/article', articleRouter);
