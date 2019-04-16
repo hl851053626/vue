@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <el-row>
+    <el-row class="wrap">
       <el-col :span='5'><router-view class="header" name='header'/></el-col>
       <el-col :span='19'><router-view class="main" name='main'/></el-col>
     </el-row>
@@ -18,12 +18,14 @@ export default {
 
 <style lang='stylus' scoped>
   #app
-    .header
-      min-height 100vh
-      text-align center
-      background #202020
-    .main 
-      padding-left 30px
-      min-height 100vh
-      background #eee
+    .wrap
+      .header
+        min-height 100vh
+        text-align center
+        background #202020
+        
+      .main 
+        padding-left 30px
+        min-height 100vh
+        background #eee
 </style>

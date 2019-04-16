@@ -5,6 +5,7 @@ import Home from '../components/Home'
 import Detail from '../components/Detail'
 import About from '../components/About'
 import Edit from '../components/Edit'
+import Tongji from '../components/Tongji'
 
 
 
@@ -46,6 +47,14 @@ export default new VueRouter({
 			components: {
 				header: Header,
 				main: Edit
+			}
+		},
+		{
+			path:'/tongji',
+			name:'tongji',
+			components: {
+				header: Header,
+				main: Tongji
 			}
 		}
 	]
