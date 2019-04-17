@@ -30,16 +30,16 @@ app.use(express.urlencoded({
 	extended: false
 }));
 app.use(cookieParser());
-app.use(history({
-	rewrites: [
-		{
-			from: /^\/about\/.*$/,
-			to: function (context) {
-				return context.parsedUrl.pathname;
-			}
-		}
-	]
-}))
+// app.use(history({
+// 	rewrites: [
+// 		{
+// 			from: /^\/about\/.*$/,
+// 			to: function (context) {
+// 				return context.parsedUrl.pathname;
+// 			}
+// 		}
+// 	]
+// }))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.all('*', function (req, res, next) {

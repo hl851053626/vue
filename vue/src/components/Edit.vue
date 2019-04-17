@@ -19,7 +19,7 @@ export default {
   },
   data() {
     return {
-      content: "",
+      content:"",
       configs: {},
       title:'',
       author:''

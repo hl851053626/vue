@@ -31,7 +31,7 @@ export default {
     }
   },
   mounted() {
-    axios.get('http://127.0.0.1:3000/home').then((res)=>{
+    axios.get('/api/home').then((res)=>{
       this.articleList = res.data.list
       console.log('art', this.articleList)
     })
