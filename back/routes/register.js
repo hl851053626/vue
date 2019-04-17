@@ -1,29 +1,46 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql')
-var sql = require('../mysql.js')
+var connect = require('../sql/mysqlConfig.js')
+var usersql = require('../sql/usersql.js')
 
-/* GET home page. */
+var client = mysql.createConnection(connect.config)
 
-var client = mysql.createConnection({
-  host: "122.152.199.244",           //这是数据库的地址
-  user: "root",                  //需要用户的名字
-  password: "root",            //用户密码 ，如果你没有密码，直接双引号就是
-  database: "vueblog",          //数据库名字
-  port: 3306
-});
-router.get('/', function (req, res, next) {
-  console.log(req.query)
-  // console.log(client)
-  console.log(1)
-  client.query('INSERT INTO users(username, password) VALUES("'+ req.query.username +'", "'+ req.query.password + '")', function (err, res) {
+router.post('/', function (req, res, next) {
+  console.log(req.body)
+  sql = usersql.users.insert
+  client.query(sql, [req.body.username, req.body.password], function (err, result) {
     if (err) {
       console.log('err:', err)
     } else {
-      console.log('res:', res)
+      console.log('res:', result)
     }
   })
-  res.send('123')
+  res.json('注册成功---来自服务端')
+})
+
+router.post('/check', function (req, res, next) {
+  var username = req.body.username
+  var msg = '',code = 0
+  sql = usersql.users.check
+  client.query(sql, [req.body.username], function (err, result) {
+    if (err) {
+      console.log('err:', err)
+    } else {
+      for(let i = 0;i < result.length;i++){
+        if (result[i].username == username){
+          msg = '用户已存在'
+          code = 1
+          break
+        }
+      }
+    }
+    res.json({
+      code: code,
+      msg: msg
+    })
+  })
+  
 })
 
 

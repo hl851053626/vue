@@ -6,6 +6,7 @@ import Detail from '../components/Detail'
 import About from '../components/About'
 import Edit from '../components/Edit'
 import Tongji from '../components/Tongji'
+import Register from '../components/Register'
 
 
 
@@ -23,6 +24,9 @@ export default new VueRouter({
 			components: {
 				header: Header,
 				main: Home
+			},
+			meta:{
+				isLogin: true
 			}
 		},
 		{
@@ -31,6 +35,9 @@ export default new VueRouter({
 			components: {
 				header: Header,
 				main: Detail
+			},
+			meta: {
+				isLogin: true
 			}
 		},
 		{
@@ -39,6 +46,9 @@ export default new VueRouter({
 			components: {
 				header: Header,
 				main: About
+			},
+			meta: {
+				isLogin: true
 			}
 		},
 		{
@@ -47,6 +57,9 @@ export default new VueRouter({
 			components: {
 				header: Header,
 				main: Edit
+			},
+			meta: {
+				isLogin: true
 			}
 		},
 		{
@@ -55,7 +68,15 @@ export default new VueRouter({
 			components: {
 				header: Header,
 				main: Tongji
+			},
+			meta: {
+				isLogin: true
 			}
+		},
+		{
+			path: '/register',
+			name: 'register',
+			component: Register
 		}
 	]
 })

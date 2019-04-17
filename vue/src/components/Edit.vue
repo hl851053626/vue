@@ -36,7 +36,7 @@ export default {
         type: "warning"
       }).then(() => {
         axios
-          .post("http://127.0.0.1:3000/article/edit", {
+          .post("/api/article/edit", {
             params: {
               author:this.author,
               title:this.title,
@@ -48,13 +48,7 @@ export default {
         });
       }else{
        this.$alert('请输入完整内容', '提示', {
-          confirmButtonText: '确定',
-          callback: action => {
-            this.$message({
-              type: 'info',
-              message: '请完成剩下的部分'
-            });
-          }
+          confirmButtonText: '确定'
        })
       }
       
