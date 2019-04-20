@@ -8,6 +8,7 @@ import Edit from '../components/Edit'
 import Tongji from '../components/Tongji'
 import Register from '../components/Register'
 import test from '../components/test'
+import Login from '../components/Login'
 
 
 Vue.use(VueRouter)
@@ -82,6 +83,11 @@ export default new VueRouter({
 			path: '/test',
 			name: 'test',
 			component: test
+		},
+	{
+			path: '/login',
+			name: 'login',
+			component: Login
 		}
 	]
 })
