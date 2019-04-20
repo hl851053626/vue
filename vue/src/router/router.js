@@ -7,7 +7,7 @@ import About from '../components/About'
 import Edit from '../components/Edit'
 import Tongji from '../components/Tongji'
 import Register from '../components/Register'
-
+import test from '../components/test'
 
 
 Vue.use(VueRouter)
@@ -77,6 +77,11 @@ export default new VueRouter({
 			path: '/register',
 			name: 'register',
 			component: Register
+		},
+		{
+			path: '/test',
+			name: 'test',
+			component: test
 		}
 	]
 })

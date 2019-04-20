@@ -89,7 +89,7 @@ export default {
           text: "访问量",
           subtext: "122.152.199.244"
         },
-        animation:false,
+        animation:true,
         tooltip: {
           trigger: "axis"
         },
@@ -134,5 +134,7 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+  
+</style>
 
